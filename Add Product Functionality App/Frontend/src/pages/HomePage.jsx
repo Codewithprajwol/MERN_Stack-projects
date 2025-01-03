@@ -9,7 +9,6 @@ const HomePage = () => {
   useEffect(()=>{
     fetchProducts()
   },[fetchProducts])
-  console.log(products)
   return (
      <Container maxW='continer.xl' py={'12'}>
       <VStack gap="8">

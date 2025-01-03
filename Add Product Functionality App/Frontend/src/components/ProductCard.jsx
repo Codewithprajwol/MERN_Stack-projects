@@ -1,20 +1,19 @@
 import { Box, Heading, HStack, IconButton, Image, Text } from '@chakra-ui/react'
 import React from 'react'
-import { FaEdit } from 'react-icons/fa'
 import { MdClose, MdDelete } from 'react-icons/md'
 import { useColorModeValue } from './ui/color-mode'
 import { useProductStore } from '../store/product'
 import { toaster } from './ui/toaster'
+import UpdateModal from '../Modal/UpdateModal'
 
 const ProductCard = ({product}) => {
-    console.log(product._id)
-    const textColor=useColorModeValue("gray.600","gray.200")
+     const textColor=useColorModeValue("gray.600","gray.200")
     const bg=useColorModeValue('white','grey.800')
+    console.log(product.image)
 
    const {deleteProduct}=useProductStore()
 
     const handleDeleteProduct=async (pid)=>{
-        console.log('i am running')
       const {success,message}=await deleteProduct(pid)
        if(success){
          toaster.create({
@@ -37,6 +36,7 @@ const ProductCard = ({product}) => {
           }
     }
   return (
+    <>
     <Box
     shadow={"lg"}
     rounded={"lg"}
@@ -48,15 +48,17 @@ const ProductCard = ({product}) => {
         <Box p={4}><Heading as={'h1'} textAlign={'left'} size="xl" mb={2}>{product.name}</Heading>
         <Text fontWeight={"bold"} textAlign={"left"} fontSize={'xl'} mb={5} color={textColor}>${product.price}</Text>
         <HStack gap={2}>
-        <IconButton bgColor={"skyblue"} aria-label="Search database">
-        <FaEdit />
-        </IconButton>
+        <UpdateModal product={product}/>
+        
         <IconButton bgColor={"red.300"} aria-label="Search database" onClick={()=>{handleDeleteProduct(product._id)}}>
         <MdDelete />
         </IconButton>
         </HStack>
         </Box>
     </Box>
+
+     
+   </>
   )
 }
 
