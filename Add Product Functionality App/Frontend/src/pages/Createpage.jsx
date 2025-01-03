@@ -22,7 +22,6 @@ const Createpage = () => {
     const {createProduct,products}=useProductStore()
   const handleAddProduct=async()=>{
    const {success,message}=await createProduct(newProduct)
-     console.log(success)
     if(success){
    toaster.create({
       title: `${message}`,
