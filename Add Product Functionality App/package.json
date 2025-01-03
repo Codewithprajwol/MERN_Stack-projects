@@ -4,7 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node  Backend/server.js"
+    "start": "node --watch Backend/server.js"
   },
   "keywords": [],
   "author": "",

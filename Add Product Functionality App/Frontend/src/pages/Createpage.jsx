@@ -45,7 +45,7 @@ const Createpage = () => {
   }
   return (
     <Container maxW={"container.sm"}>
-      <VStack separator={<StackSeparator />}>
+      <VStack>
         <Heading as={"h1"} size={"2xl"} textAlign={"center"} mb="8">
           Create New Product
         </Heading>
@@ -56,7 +56,7 @@ const Createpage = () => {
           rounded={"lg"}
           shadow={"md"}
         >
-          <VStack>
+          <VStack gap={4}>
             <Input
               placeholder="Product Name"
               name="name"
@@ -75,7 +75,11 @@ const Createpage = () => {
               value={newProduct.image}
               onChange={(e) => (setNewProduct({ ...newProduct, image: e.target.value }))}
             />
-            <Button bgColor={'blue.500'} onClick={handleAddProduct} w='full'>Add Product</Button>
+            <Button
+            bgGradient={"to-r"}
+            gradientFrom={"cyan.400"}
+            gradientTo={"blue.500"}
+              onClick={handleAddProduct} w='full'>Add Product</Button>
           </VStack>
         </Box>
       </VStack>

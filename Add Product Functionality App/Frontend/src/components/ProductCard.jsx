@@ -9,11 +9,10 @@ import UpdateModal from '../Modal/UpdateModal'
 const ProductCard = ({product}) => {
      const textColor=useColorModeValue("gray.600","gray.200")
     const bg=useColorModeValue('white','grey.800')
-    console.log(product.image)
 
    const {deleteProduct}=useProductStore()
 
-    const handleDeleteProduct=async (pid)=>{
+    const handleDeleteProduct=async(pid)=>{
       const {success,message}=await deleteProduct(pid)
        if(success){
          toaster.create({
@@ -44,12 +43,11 @@ const ProductCard = ({product}) => {
     transition={"all 0.3s"}
     bg={bg}
     _hover={{transform:"translateY(-5px)",shadow:"xl"}}>
-        <Image src={product.image} alt={product.name} h={48} w='full' objectFit="cover"/>
+        <Image src={product.image} alt={product.name} h={48} w='full' objectFit="cover" />
         <Box p={4}><Heading as={'h1'} textAlign={'left'} size="xl" mb={2}>{product.name}</Heading>
         <Text fontWeight={"bold"} textAlign={"left"} fontSize={'xl'} mb={5} color={textColor}>${product.price}</Text>
         <HStack gap={2}>
         <UpdateModal product={product}/>
-        
         <IconButton bgColor={"red.300"} aria-label="Search database" onClick={()=>{handleDeleteProduct(product._id)}}>
         <MdDelete />
         </IconButton>

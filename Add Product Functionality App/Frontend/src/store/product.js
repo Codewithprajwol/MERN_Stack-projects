@@ -15,7 +15,6 @@ export const useProductStore=create((set)=>({
             body:JSON.stringify(newProduct)
         })
         const data=await res.json();
-        console.log(data)
         set((state)=>({products:[...state.products,data.data]}))
         if(data.success){
         return {success:true,message:"product created Successfully"}
@@ -34,6 +33,7 @@ export const useProductStore=create((set)=>({
             method:"DELETE"
         });
         const data=await res.json();
+        console.log(data.data)
         if(!data.success) return {success:false, message:data.message}
         set(state=>({products:state.products.filter(product =>product._id !==pid)}));
         return {success:true,message:data.message}

@@ -5,7 +5,6 @@ import product from "../model/products.model.js";
 export const createProduct=async(req,res)=>{
     try{
     const userData=req.body
-    console.log(userData)
     if(!userData.name || !userData.price || !userData.image){
         res.status(400).json({success:false,message:"data doesnot send properly"})
     }
@@ -30,8 +29,8 @@ export const getProduct=async(req,res)=>{
 export const deleteProduct=async(req,res)=>{
     try{
     const {id}=req.params;
-    await product.findOneAndDelete(id)
-    res.status(200).json({success:true,message:'data deleted successfully'})
+    const deletedData=await product.findOneAndDelete({_id:id})
+    res.status(200).json({success:true,message:'data deleted successfully',data:deletedData})
     }catch(err){
     res.status(500).json({success:false, message:'some error occured while deleting the data'})
     }

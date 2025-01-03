@@ -32,7 +32,7 @@ const NavBar = () => {
                 <Link to={"/create"}>
                <Box as={CiSquarePlus} boxSize="40px" title="create Product" />
                 </Link>
-            <Button size="xs" onClick={toggleColorMode}><ColorModeIcon /></Button >
+            <Button size="xs" onClick={toggleColorMode} title='change Mode'><ColorModeIcon /></Button >
             </HStack>
           </Flex>
     </Container>
