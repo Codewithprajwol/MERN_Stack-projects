@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage'
 import Createpage from './pages/Createpage'
 import NavBar from './components/NavBar'
 import { useColorModeValue } from './components/ui/color-mode'
+import { Toaster } from './components/ui/toaster'
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <Route path='/' element={<HomePage />}></Route>
       <Route path='/create' element={<Createpage />}></Route>
     </Routes>
+    <Toaster />
    </Box>
 
   )

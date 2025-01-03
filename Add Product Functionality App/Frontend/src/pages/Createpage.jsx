@@ -1,3 +1,4 @@
+import { useProductStore } from "../store/product";
 import { useColorModeValue } from "../components/ui/color-mode";
 import {
   Box,
@@ -9,6 +10,8 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
+import { toaster } from "../components/ui/toaster";
+import { MdClose } from "react-icons/md";
 
 const Createpage = () => {
   const [newProduct, setNewProduct] = useState({
@@ -16,8 +19,30 @@ const Createpage = () => {
     price: "",
     image: "",
   });
-  const handleAddProduct=()=>{
-    console.log(newProduct)
+    const {createProduct,products}=useProductStore()
+  const handleAddProduct=async()=>{
+   const {success,message}=await createProduct(newProduct)
+     console.log(success)
+    if(success){
+   toaster.create({
+      title: `${message}`,
+      type: 'success',
+      duration:3000,
+      action: {
+        label: <MdClose />,
+      },
+    })
+    }else{
+      toaster.create({
+        title: `${message}`,
+        type: 'error',
+        duration:3000,
+        action:{
+          label:<MdClose />
+        }
+      })
+    }
+    setNewProduct({name:"",price:"",image:""})
   }
   return (
     <Container maxW={"container.sm"}>
