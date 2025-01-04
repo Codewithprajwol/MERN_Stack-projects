@@ -1,5 +1,4 @@
 import { Box } from '@chakra-ui/react'
-import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import Createpage from './pages/Createpage'

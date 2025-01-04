@@ -6,10 +6,9 @@ import {
   Container,
   Heading,
   Input,
-  StackSeparator,
   VStack,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import  { useState } from "react";
 import { toaster } from "../components/ui/toaster";
 import { MdClose } from "react-icons/md";
 
@@ -19,7 +18,7 @@ const Createpage = () => {
     price: "",
     image: "",
   });
-    const {createProduct,products}=useProductStore()
+    const {createProduct}=useProductStore()
   const handleAddProduct=async()=>{
    const {success,message}=await createProduct(newProduct)
     if(success){

@@ -1,5 +1,4 @@
 import { Box, Heading, HStack, IconButton, Image, Text } from '@chakra-ui/react'
-import React from 'react'
 import { MdClose, MdDelete } from 'react-icons/md'
 import { useColorModeValue } from './ui/color-mode'
 import { useProductStore } from '../store/product'
@@ -8,7 +7,7 @@ import UpdateModal from '../Modal/UpdateModal'
 
 const ProductCard = ({product}) => {
      const textColor=useColorModeValue("gray.600","gray.200")
-    const bg=useColorModeValue('white','grey.800')
+    const bg=useColorModeValue('white','gray.900')
 
    const {deleteProduct}=useProductStore()
 

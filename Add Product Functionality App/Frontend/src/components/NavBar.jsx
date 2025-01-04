@@ -1,5 +1,4 @@
 import { Box,Button,Container, Flex, HStack, Text} from '@chakra-ui/react'
-import React from 'react'
 import { CiSquarePlus } from 'react-icons/ci'
 import { Link } from 'react-router-dom'
 import { ColorModeIcon, useColorMode } from './ui/color-mode'
