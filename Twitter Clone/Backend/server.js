@@ -3,6 +3,7 @@ import 'dotenv/config'
 
 import authRoute from './Routes/auth.routes.js'
 import userRoutes from './Routes/user.routes.js'
+import postRoutes from './Routes/post.routes.js'
 
 import { connectdb } from './config/db.config.js'
 import cookieParser from 'cookie-parser'
@@ -22,6 +23,7 @@ app.use(cookieParser())
 
 app.use('/user/auth',authRoute)
 app.use('/api/users',userRoutes)
+app.use('/api/posts',postRoutes)
 
 app.listen(PORT,()=>{
     console.log('server is listening on port 4000');
