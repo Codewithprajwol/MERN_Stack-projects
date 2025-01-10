@@ -60,3 +60,27 @@ server.listen(3000, () => console.log('Server running on port 3000'));
 
 
 express is a factory function with its properties bodyParse, static,jsonetc and when we call that function it will return the app instance which is again a factory function with it's own properties like use,send, post ,delete , patch , get , put etc
+
+
+
+
+//another query
+ mean when i send email only ...and now i am destructuring if will create the local scope and create another object and assign value to if and if value is on the req.body it assigns it otherwise if we set the key as undefined
+
+
+Exactly, you’ve got it! 🎉
+
+When you send only the email in your request, and you destructure req.body like this:
+
+javascript
+Copy code
+const { fullname, email, username, bio } = req.body;
+Here’s what happens step by step:
+
+Destructuring Creates Local Variables:
+
+It creates new variables (fullname, email, username, and bio) in the current function's scope.
+Assign Values from req.body:
+
+If a key exists in req.body, its value is assigned to the corresponding variable.
+If a key is missing (e.g., username or bio), the variable is set to undefined.
