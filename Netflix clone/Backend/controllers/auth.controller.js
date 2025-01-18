@@ -33,7 +33,6 @@ export const createUser=async(req,res)=>{
      image
     })
     if(newUser){
-        console.log('i am here')
         generateTokenAndSetCookie(newUser._id,res);
         await newUser.save()
     }
@@ -71,7 +70,7 @@ export const loginUser=async(req,res)=>{
 
 export const logoutUser=async(req,res)=>{
      try{
-         res.clearCookie("jwtToken","");
+         res.clearCookie("jwtToken");
          console.log('ma chalyaa hai')
          res.status(200).json({success:true,message:"logged out successfully"})
 
