@@ -1,6 +1,7 @@
 //? module imports
 import express from 'express'
 import authRoutes from './routes/auth.routes.js'
+import movieRoutes from './routes/movie.routes.js'
 //?file imports
 import { ENV_VAR } from './config/env.config.js'
 import { connectdb } from './config/dbConnect.js'
@@ -14,6 +15,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
 app.use('/api/v1/auth',authRoutes)
+app.use('/api/v1/movie',movieRoutes)
 
 
 
@@ -21,3 +23,7 @@ app.listen(PORT,()=>{
     console.log("Server is listening at port",PORT,)
     connectdb()
 })
+
+
+
+
