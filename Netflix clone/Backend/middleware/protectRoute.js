@@ -4,7 +4,6 @@ import User from "../models/user.model.js";
 
 export const protectRoute = async(req, res, next) => {
     try{
-        console.log(req.cookies)
         const token=req.cookies["jwtToken"];
         if(!token){
            return res.status(404).json({success:false,error:"Not authorized User"});
@@ -14,7 +13,6 @@ export const protectRoute = async(req, res, next) => {
             return res.status(404).json({error:"inavalid token"})
         }
         const user=await User.findById(decoded.userId);
-        console.log(user)
         if(!user){
             return res.status(400).json({error:"user not found"});
         }
