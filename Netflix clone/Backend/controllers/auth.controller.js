@@ -5,7 +5,6 @@ import { generateTokenAndSetCookie } from "../utils/generateToken.utils.js";
 export const createUser=async(req,res)=>{
  try{
     const {email,password, username}=req.body;
-    console.log(email,password, username)
     const emailRegix=/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
     if(!emailRegix.test(email)){
      return res.status(400).json({error:'please send the valid email'})
@@ -34,6 +33,7 @@ export const createUser=async(req,res)=>{
      image
     })
     if(newUser){
+        console.log('i am here')
         generateTokenAndSetCookie(newUser._id,res);
         await newUser.save()
     }
@@ -52,12 +52,12 @@ export const loginUser=async(req,res)=>{
     if(!email || !password){
         return res.status(400).json({error:"please provide the proper username and email"})
     }
+    
     const user=await User.findOne({email});
     if(!user) return res.status(400).json({error:"user not found"})
-    
-    const confirmPassword=await bcrypt.compare(password,user.password)
-    if(!confirmPassword) return res.status(400).json({error:"password didnot match"})
-    
+        
+        const confirmPassword=await bcrypt.compare(password,user.password)
+        if(!confirmPassword) return res.status(400).json({error:"password didnot match"})
     generateTokenAndSetCookie(user._id,res);
     res.status(200).json({message:"user login successfully", data:{
         ...user._doc,
@@ -72,6 +72,7 @@ export const loginUser=async(req,res)=>{
 export const logoutUser=async(req,res)=>{
      try{
          res.clearCookie("jwtToken","");
+         console.log('ma chalyaa hai')
          res.status(200).json({success:true,message:"logged out successfully"})
 
      }catch(err){
