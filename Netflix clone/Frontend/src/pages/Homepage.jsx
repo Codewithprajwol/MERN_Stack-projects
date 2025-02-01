@@ -1,8 +1,10 @@
-import React from 'react'
+import AuthScreen from "./home/AuthScreen";
+import HomeScreen from "./home/HomeScreen"
 
 const Homepage = () => {
+  const user=false;
   return (
-    <div className='home-bg min-h-screen'></div>
+      {user ? <HomeScreen />:<AuthScreen/>}
   )
 }
 
