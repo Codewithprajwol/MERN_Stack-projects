@@ -4,7 +4,7 @@ import HomeScreen from "./home/HomeScreen"
 const Homepage = () => {
   const user=false;
   return (
-      {user ? <HomeScreen />:<AuthScreen/>}
+      user ? <HomeScreen />:<AuthScreen/>
   )
 }
 

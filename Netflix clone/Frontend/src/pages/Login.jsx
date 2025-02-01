@@ -1,6 +1,5 @@
 
 import { useState } from 'react'
-import netfilxLogo from '../public/netflix-logo.png'
 import { Link } from 'react-router-dom'
 const Login = () => {
   const [email,setEmail]=useState('')
@@ -14,7 +13,7 @@ const Login = () => {
     <div className='h-screen w-full home-bg'>
         <header className='max-w-6xl mx-auto flex items-center justify-between p-4 '>
             <Link to={'/'}>
-            <img src={netfilxLogo} alt='netflix logo' className='w-52' />
+            <img src='./netflix-logo.png' alt='netflix logo' className='w-52' />
         </Link>
         </header>
         <div className="flex justify-center items-center mt-10 mx-3 ">
