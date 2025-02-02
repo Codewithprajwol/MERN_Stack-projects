@@ -114,6 +114,61 @@ const AuthScreen = () => {
          {/* seperator */}
          <div className="h-2 w-full bg-[#232332] aria-hidden:'true'"></div>
          {/* section-3 */}
+         <div className="py-10 bg-black text-white">
+        <div className="flex max-w-6xl mx-auto text-center md:text-left items-center justify-center flex-col md:flex-row  px-4 md:px-2">
+          {/* left side */}
+          <div className="flex-1">
+            <div className="text-4xl md:text-5xl font-extrabold mb-4">
+              Watch EveryWhere
+            </div>
+            <p className="text-lg md:text-xl">
+              Stream unlimited movies and Tv shows on your phone, tablet, laptop and Tv.
+            </p>
+          </div>
+          {/* right side */}
+          <div className="flex-1 relative overflow-hidden">
+            <img src="./device-pile.png" alt="tvImage" className="mt-4 z-20 relative" />
+            <video
+              playsInline
+              autoPlay={true}
+              muted
+              loop
+              className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 h-4/6 z-10 max-w-[63%]"
+            >
+              <source src="./hero-vid.m4v" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </div>
+      {/* seperator */}
+      <div className="h-2 w-full bg-[#232332] aria-hidden:'true'"></div>
+
+      {/* section-3 */}
+
+      <div className="py-10 bg-black text-white">
+        <div className="flex gap-5 max-w-6xl mx-auto items-center justify-center flex-col text-center md:flex-row px-7 md:text-left md:px-2">
+          {/* left side */}
+          <div className="flex-1 relative">
+            <img
+              src="./kids.png"
+              alt="large strange Image"
+              className="mt-4"
+            />
+          </div>
+          {/* right side */}
+          <div className="flex-1">
+            <div className="text-4xl md:text-5xl font-extrabold mb-4">
+              Create Profiles for Kids
+            </div>
+            <p className="text-lg md:text-xl">
+              Send Kids on adventures with their favorite characters in a space made just for them...free with your membership
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+
          
     </div>
     
