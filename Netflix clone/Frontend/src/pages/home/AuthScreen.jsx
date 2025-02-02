@@ -1,9 +1,11 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { ChevronRight } from "lucide-react";
 const AuthScreen = () => {
   // console.log(vid)
   const [email, setEmail] = useState("");
+  const navigate=useNavigate()
+  
   return (
     <div className="home-bg m-h-screen w-full relative">
       {/* navbar */}
@@ -40,7 +42,7 @@ const AuthScreen = () => {
             className="p-2 rounded flex-1 bg-black/80 border border-gray-700"
             onChange={(e) => setEmail(e.target.value)}
           />
-          <button className="bg-red-600 text-xl px-2 lg:px-6 py-1 md:py-2 rounded flex justify-center items-center">
+          <button onClick={()=>{navigate('/signup?email='+email)}} className="bg-red-600 text-xl px-2 lg:px-6 py-1 md:py-2 rounded flex justify-center items-center">
             Get Started <ChevronRight />
           </button>
         </form>

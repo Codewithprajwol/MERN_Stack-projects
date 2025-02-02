@@ -28,10 +28,10 @@ const Login = () => {
                     <label htmlFor="Password" className='text-sm font-medium text-gray-300 block'>Password</label>
                     <input type="password" name="password" value={password} onChange={(e)=>setPassword(e.target.value)} id="Password" className='w-full px-3 py-2 mt-1 border border-gray-700 rounded-md  text-white focus:outline-none focus:ring ' placeholder='*********' />
                 </div>
-                <button onClick={(e)=>handleLogin(e)} className="w-full py-2 bg-red-600 text-white font-semibold rounded-md hover:bg-red-900 cursor-pointer">Sign Up</button>
+                <button onClick={(e)=>handleLogin(e)} className="w-full py-2 bg-red-600 text-white font-semibold rounded-md hover:bg-red-900 cursor-pointer">Sign In</button>
                </form>
                <div className="text-center text-gray-400">
-                Don't have an account?{" "} <Link to={'/signup'} className='text-red-500 hover:underline hover:underline-offset-4'>Sign In</Link>
+                Don't have an account?{" "} <Link to={'/signup'} className='text-red-500 hover:underline hover:underline-offset-4'>Sign Up</Link>
                </div>
               </div>
         </div>
