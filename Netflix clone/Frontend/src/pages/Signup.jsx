@@ -1,17 +1,28 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import { useAuthStore } from '../store/useAuthStore'
 
 const Signup = () => {
     const {searchParams}=new URL(window.location)
     const urlEmail=searchParams.get('email')
+    
+    const navigate=useNavigate()
 
-    const[email,setEmail]=useState(urlEmail)
+    //? from zustand
+  const {signupUser,user}=useAuthStore()
+  console.log(user)
+  
+    const[email,setEmail]=useState(urlEmail || '')
     const[password,setPassword]=useState('')
     const[username,setUsername]=useState('')
 
     const handleSignup=(e)=>{
         e.preventDefault()
-        console.log({email,password,username})
+        const user=signupUser({email,password,username})
+        if(user)
+        {
+          navigate('/')
+        }
     }
 
   return (

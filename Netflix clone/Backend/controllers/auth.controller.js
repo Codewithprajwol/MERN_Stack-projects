@@ -3,18 +3,19 @@ import bcrypt from 'bcrypt'
 import { generateTokenAndSetCookie } from "../utils/generateToken.utils.js";
 
 export const createUser=async(req,res)=>{
+    console.log("ma va tha aako thiyoo hai")
  try{
     const {email,password, username}=req.body;
     const emailRegix=/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
     if(!emailRegix.test(email)){
      return res.status(400).json({error:'please send the valid email'})
     }
-    if(password.lenght<6){
+    if(password.length<6){
      return res.status(400).json({error:"password length should be greater or equal that 6"})
     }
     const existingUsername=await User.findOne({username})
     if(existingUsername){
-     return res.status(400).json({error:'username alread exists'})
+     return res.status(400).json({error:'username already exists'})
     }
     const existingEmail=await User.findOne({email})
     if(existingEmail){
