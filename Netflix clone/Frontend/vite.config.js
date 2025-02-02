@@ -6,4 +6,11 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   plugins: [react(),tailwindcss()],
   assetsInclude: ['**/*.m4v'],
+  server:{
+    proxy:{
+      '/api':{
+        target:'http://localhost:3000'
+      }
+    }
+  }
 })
