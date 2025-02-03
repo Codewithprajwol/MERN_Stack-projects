@@ -10,14 +10,12 @@ import { ENV_VAR } from './config/env.config.js'
 import { connectdb } from './config/dbConnect.js'
 import cookieParser from 'cookie-parser'
 import { protectRoute } from './middleware/protectRoute.js'
-import cors from 'cors'
 
 const app=express()
 
 
 const PORT=ENV_VAR.port;
 
-app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser())

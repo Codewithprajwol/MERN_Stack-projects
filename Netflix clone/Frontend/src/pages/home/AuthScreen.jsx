@@ -7,7 +7,7 @@ const AuthScreen = () => {
   const navigate=useNavigate()
   
   return (
-    <div className="home-bg m-h-screen w-full relative">
+    <div className="home-bg min-h-screen w-full relative">
       {/* navbar */}
       <header className="max-w-6xl mx-auto flex items-center justify-between p-4 pb-10">
         <img
@@ -25,7 +25,7 @@ const AuthScreen = () => {
       {/* hero-section */}
       <div className="flex items-center justify-center flex-col text-center py-40 max-w-6xl mx-auto text-white">
         <div className="text-4xl md:text-6xl font-bold mb-4">
-          Unlimited movies, Tv shows, and more
+          Unlimited movies, Tv shows, and more 
         </div>
         <p className="text-lg mg-4">Watch anywhre. Cancel anytime.</p>
         <p className="mb-4">

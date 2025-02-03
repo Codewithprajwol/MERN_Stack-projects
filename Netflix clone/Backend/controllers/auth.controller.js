@@ -3,7 +3,6 @@ import bcrypt from 'bcrypt'
 import { generateTokenAndSetCookie } from "../utils/generateToken.utils.js";
 
 export const createUser=async(req,res)=>{
-    console.log("ma va tha aako thiyoo hai")
  try{
     const {email,password, username}=req.body;
     const emailRegix=/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/

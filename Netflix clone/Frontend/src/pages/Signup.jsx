@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link} from 'react-router-dom'
 import { useState } from 'react'
 import { useAuthStore } from '../store/useAuthStore'
 
@@ -6,7 +6,6 @@ const Signup = () => {
     const {searchParams}=new URL(window.location)
     const urlEmail=searchParams.get('email')
     
-    const navigate=useNavigate()
 
     //? from zustand
   const {signupUser,user}=useAuthStore()
@@ -18,11 +17,7 @@ const Signup = () => {
 
     const handleSignup=(e)=>{
         e.preventDefault()
-        const user=signupUser({email,password,username})
-        if(user)
-        {
-          navigate('/')
-        }
+         signupUser({email,password,username})
     }
 
   return (
