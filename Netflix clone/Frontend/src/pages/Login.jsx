@@ -1,13 +1,27 @@
 
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useAuthStore } from '../store/useAuthStore'
+import { Loader } from 'lucide-react'
 const Login = () => {
   const [email,setEmail]=useState('')
   const [password,setPassword]=useState('')
 
+ const {isLoggingIn,loginUser}=useAuthStore()
+
+//  if(isLoggingIn){
+//   return (
+//     <div className="h-screen">
+//       <div className="flex justify-center items-center bg-black h-full">
+//         <Loader className='animate-spin text-red-600 size-10' />
+//       </div>
+//     </div>
+//   )
+//  }
+
   const handleLogin=(e)=>{
     e.preventDefault()
-    console.log({email,password})
+    loginUser({email,password})
   }
   return (
     <div className='h-screen w-full home-bg'>
