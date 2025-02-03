@@ -24,7 +24,7 @@ export const createUser=async(req,res)=>{
     const hashPassowrd=await bcrypt.hash(password,salt)
  
  
-     const image_url=['./userImage.png','/userImage1.png','/userImage2.png']
+     const image_url=['./avatar1.png','/avatar2.png','/avatar3.png']
      const image=image_url[Math.floor(Math.random()*image_url.length)]
     const newUser=new User({
      username,

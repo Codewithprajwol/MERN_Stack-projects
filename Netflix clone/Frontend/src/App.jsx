@@ -14,8 +14,8 @@ const App = () => {
 
   if(isAuthenticating){
   return (
-    <div className="h-screen">
-      <div className="flex justify-center items-center bg-black h-full">
+    <div className="h-screen w-full home-bg">
+      <div className="flex justify-center items-center w-full h-full">
         <Loader className='animate-spin text-red-600 size-10' />
       </div>
     </div>

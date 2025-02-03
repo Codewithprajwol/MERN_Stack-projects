@@ -30,7 +30,7 @@ export const useAuthStore=create((set)=>({
             set({user:response.data.user,isAuthenticating:false})
 
         }catch(err){
-            console.log(err)
+            // console.log(err)
             set({user:null,isAuthenticating:false})
         }
     },
