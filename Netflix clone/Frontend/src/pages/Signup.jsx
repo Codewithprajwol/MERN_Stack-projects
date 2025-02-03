@@ -8,8 +8,7 @@ const Signup = () => {
     
 
     //? from zustand
-  const {signupUser,user}=useAuthStore()
-  console.log(user)
+  const {signupUser}=useAuthStore()
   
     const[email,setEmail]=useState(urlEmail || '')
     const[password,setPassword]=useState('')

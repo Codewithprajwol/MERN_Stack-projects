@@ -4,19 +4,44 @@ import toast from 'react-hot-toast'
 
 export const useAuthStore=create((set)=>({
     user:null,
-    isAuthenticating:false,
+    isSigningIn:false,
+    isAuthenticating:true,
+    isLoggingOut:false,
     signupUser:async(userData)=>{
-        set({isAuthenticating:true})
+        set({isSigningIn:true})
         try{
         const response=await axios.post('/api/v1/auth/signup',userData)
         if(response.data.success){
             console.log(response.data?.data)
             toast.success('user created Successfully')
-            set({user:response.data?.data})
+            set({user:response.data?.data,isSigningIn:false})
         }
         }catch(err){
             toast.error(err.response?.data?.error || "signup failed")
-            console.log(err)
+            set({user:null,isSigningIn:false})
+        console.log(err)
         }
     },
+    authCheckUser:async()=>{
+        try{
+            set({isAuthenticating:true})
+            const response=await axios.get('/api/v1/auth/authcheck');
+            set({user:response.data.user,isAuthenticating:false})
+
+        }catch(err){
+            console.log(err)
+            set({user:null,isAuthenticating:false})
+        }
+    },
+    logoutUser:async()=>{
+        try{
+        set({isLoggingOut:true})
+        await axios.post('/api/v1/auth/logout')
+        toast.success('user logged out Successfully')
+        set({user:null,isLoggingOut:false})
+        }catch(err){
+            console.log(err)
+            set({user:null,isLoggingOut:false})
+        }
+    }
 }))

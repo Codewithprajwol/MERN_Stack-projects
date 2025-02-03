@@ -1,7 +1,11 @@
+import { useAuthStore } from "../../store/useAuthStore"
 
 const HomeScreen = () => {
+  const logout=useAuthStore((state)=>state.logoutUser)
   return (
-    <div>HomeScreen</div>
+    <div>HomeScreen <button onClick={logout}>logout</button></div>
+
+
   )
 }
 
