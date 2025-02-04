@@ -2,12 +2,11 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuthStore } from '../store/useAuthStore'
-import { Loader } from 'lucide-react'
 const Login = () => {
   const [email,setEmail]=useState('')
   const [password,setPassword]=useState('')
 
- const {isLoggingIn,loginUser}=useAuthStore()
+ const {loginUser}=useAuthStore()
 
 //  if(isLoggingIn){
 //   return (
