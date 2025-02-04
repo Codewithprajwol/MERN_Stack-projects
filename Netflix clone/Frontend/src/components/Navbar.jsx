@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
-import {Link, NavLink} from 'react-router-dom'
+import { useState } from 'react'
+import { NavLink} from 'react-router-dom'
 import {LogOut, Menu, Search} from 'lucide-react'
 import { useAuthStore } from '../store/useAuthStore';
+import { useContentStore } from '../store/useContentStore';
 
 const Navbar = () => {
+   const {setContentType}=useContentStore()
     const [isMobileMenuOpen,setIsMobileMenuOpen]=useState(false);
     const toggleMobileMenu=()=>setIsMobileMenuOpen(!isMobileMenuOpen)
 
@@ -16,10 +18,10 @@ const Navbar = () => {
            <img src="./netflix-logo.png" alt="Netflix logo" className='w-32 sm:w-40' />
            </NavLink>
            {/*desktop navbar items */}
-           <div className='hidden sm:flex gap-2 items-center'>
-            <NavLink to={'/'} className="hover:underline">Movies</NavLink>
-            <NavLink to={'/'} className="hover:underline">Tv Shows</NavLink>
-            <NavLink to={'/history'} className="hover:underline">History</NavLink>
+           <div className='hidden sm:flex gap-4 items-center'>
+            <NavLink to={'/'} className="hover:underline hover:underline-offset-5 hover:text-red-500 transition-colors duration-200" onClick={()=>setContentType('movie')}>Movies</NavLink>
+            <NavLink to={'/'} className="hover:underline hover:underline-offset-5 hover:text-red-500 transition-colors duration-200" onClick={()=>setContentType('tv')}>Tv Shows</NavLink>
+            <NavLink to={'/history'} className="hover:underline hover:underline-offset-5 hover:text-red-500 transition-colors duration-200">History</NavLink>
            </div>
         </div>
            <div className="flex gap-3 items-center z-50">
