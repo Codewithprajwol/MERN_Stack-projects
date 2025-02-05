@@ -8,6 +8,7 @@ import { useAuthStore } from './store/useAuthStore'
 import { useEffect } from 'react'
 import { Loader } from 'lucide-react'
 import WatchPage from './pages/WatchPage'
+import Historypage from './pages/Historypage'
 
 const App = () => {
    const {authCheckUser,isAuthenticating,user}=useAuthStore()
@@ -30,6 +31,7 @@ const App = () => {
       <Route path='/signup' element={!user?<Signup/>:<Navigate to={'/'}/>} />
       <Route path='/watch/:id' element={user?<WatchPage/>:<Login/>} />
       <Route path='/' element={<Homepage/>} />
+      <Route path='/history' element={<Historypage/>} />
     </Routes>
     <Footer/>
     <Toaster/>

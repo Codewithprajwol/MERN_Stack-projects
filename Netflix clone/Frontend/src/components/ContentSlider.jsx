@@ -12,7 +12,7 @@ const ContentSlider = ({category}) => {
     const sliderRef=useRef(null)
 
 
-    const scrollLeft=()=>{
+   const scrollLeft=()=>{
         console.log(sliderRef.current.offsetWidth)
         if(sliderRef.current){
             sliderRef.current.scrollBy({left:-sliderRef.current.offsetWidth,behavior:'smooth'})
@@ -49,10 +49,10 @@ const ContentSlider = ({category}) => {
         </div>
         {arrowShow && (
             <>
-            <button onClick={scrollLeft} className='absolute left-0 md:left-20 top-1/2 -translate-y-1/2 flex items-center justify-center size-12 rounded-full bg-black bg-opacity-50 hover:bg-opacity-75 text-white z-10 cursor-pointer'>
+            <button onClick={scrollLeft} className='absolute left-0 md:left-20 top-1/2 -translate-y-1/2 flex items-center justify-center size-12 rounded-full bg-red-500 bg-opacity-50 hover:bg-opacity-75 text-white z-10 cursor-pointer'>
                 <ChevronLeft/>
             </button>
-            <button onClick={scrollRight} className='absolute right-0 md:right-20 top-1/2 -translate-y-1/2 flex items-center justify-center size-12 rounded-full bg-black bg-opacity-50 hover:bg-opacity-75 text-white z-10 cursor-pointer'>
+            <button onClick={scrollRight} className='absolute right-0 md:right-20 top-1/2 -translate-y-1/2 flex items-center justify-center size-12 rounded-full bg-red-500 bg-opacity-50 hover:bg-opacity-75 text-white z-10 cursor-pointer'>
                 <ChevronRight/>
             </button>
             </>
