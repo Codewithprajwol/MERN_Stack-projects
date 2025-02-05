@@ -3,9 +3,9 @@ import Navbar from "../../components/Navbar"
 import { Info, Play } from "lucide-react"
 import { useGetContent } from "../../Hooks/useGetContent"
 import { GET_ORIGINAL_URL, MOVIE_CATEGORIES, TV_CATEGORIES } from "../../utils/constant"
+
 import { useContentStore } from "../../store/useContentStore"
 import MovieSlider from "../../components/MovieSlider"
-
 
 const HomeScreen = () => {
      const {content}=useGetContent()
