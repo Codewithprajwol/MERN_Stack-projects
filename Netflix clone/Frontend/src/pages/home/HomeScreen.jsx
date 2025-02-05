@@ -6,16 +6,27 @@ import { GET_ORIGINAL_URL, MOVIE_CATEGORIES, TV_CATEGORIES } from "../../utils/c
 
 import { useContentStore } from "../../store/useContentStore"
 import MovieSlider from "../../components/MovieSlider"
+import { useState } from "react"
 
 const HomeScreen = () => {
      const {content}=useGetContent()
      const {contentType}=useContentStore()
-     console.log('parent component rerendered')
+     const [imageLoading,setImageLoading]=useState(true)
+
+     if(!content){
+      return (<div className="h-screen w-full text-white relative">
+        <Navbar />  
+        <div className="absolute top-0 left-0 w-full h-full  items-center justify-center shimmer">
+
+        </div>
+      </div>)
+     }
+     
   return (
     <>
     <div className="relative w-full h-screen text-white">
       <Navbar />
-      <img src={GET_ORIGINAL_URL+`${content?.backdrop_path}`} alt="extraction Image" className="absolute top-0 left-0 w-full h-full object-cover -z-50" />
+      <img onLoad={()=>setImageLoading(false)} src={GET_ORIGINAL_URL+`${content?.backdrop_path}`} alt="extraction Image" className="absolute top-0 left-0 w-full h-full object-cover -z-50" />
       <div className="absolute top-0 left-0 h-full bg-black/45 w-full -z-50 " aria-hidden="true"></div> 
        <div className="absolute top-0 left-0 h-full w-full flex flex-col justify-center px-8 md:px-16 lg:px-32">
         <div className="absolute top-0 left-0 bg-gradient-to-b from-black via-transparent to-transparent -z-10 w-full h-full"></div>
@@ -31,7 +42,7 @@ const HomeScreen = () => {
       </div>
 
     </div>
-    <div className="flex flex-col gap-10 py-10 w-full bg-black text-white">
+    <div className="flex flex-col gap-10 py-10 w-full bg-black text-white ">
   {contentType==='movie'?(MOVIE_CATEGORIES.map((category)=><MovieSlider key={category} category={category}/>)):(TV_CATEGORIES.map((category)=><MovieSlider key={category} category={category}/>))}
     </div>
     </>

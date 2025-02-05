@@ -4,9 +4,12 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { GET_SMALLER_URL } from '../utils/constant'
+import { ChevronLeft } from 'lucide-react'
 const MovieSlider = ({category}) => {
 
     const [content,setContent]=useState([])
+    const [arrowShow,setArrowShow]=useState(false)
+
     
     const contentType=useContentStore((state)=>state.contentType)
     console.log(category,contentType)
@@ -14,16 +17,14 @@ const MovieSlider = ({category}) => {
     const formattedContentType=contentType==='movie'? 'Movies' :'TV Shows'
 
     useEffect(()=>{
-        console.log(`MovieSlider mounted for category: ${category}`);
         const getContent=async()=>{
             const res=await axios.get(`/api/v1/${contentType}/${category}`)
-            console.log(`MovieSlider data fetched for category: ${category}`);
             setContent(res.data.content)
         }
         getContent()
     },[contentType,category])
   return (
-    <div className='text-white bg-black relative px-5 md:px-20'>
+    <div className='text-white bg-black relative px-5 md:px-20'  onMouseEnter={()=>setArrowShow(true)} onMouseLeave={()=>setArrowShow(false)}>
         <h2 className='mb-4 font-bold text-2xl'>{formattedCategoryName}{" "}{formattedContentType}</h2>
         <div className="flex space-x-4 overflow-x-scroll">
             {content.map((item)=>(<Link key={item.id} to={`/watch/${item.id}`} className='min-w-[250px] relative group'>
@@ -33,6 +34,16 @@ const MovieSlider = ({category}) => {
             <p className='mt-2 text-center'>{item.title || item.name}</p>
             </Link>))}
         </div>
+        {arrowShow && (
+            <>
+            <button className='absolute left-0 md:left-20 top-1/2 -translate-y-1/2 flex items-center justify-center size-12 rounded-full bg-black bg-opacity-50 hover:bg-opacity-75 text-white z-10 cursor-pointer'>
+                <ChevronLeft/>
+            </button>
+            <button className='absolute right-0 md:right-20 top-1/2 -translate-y-1/2 flex items-center justify-center size-12 rounded-full bg-black bg-opacity-50 hover:bg-opacity-75 text-white z-10 cursor-pointer'>
+                <ChevronLeft/>
+            </button>
+            </>
+        )}
     </div>
   )
 }

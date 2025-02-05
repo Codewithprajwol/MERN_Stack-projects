@@ -8,10 +8,8 @@ export const useGetContent=()=>{
 
 
     useEffect(()=>{
-        console.log('parent vetra ko useeffect render')
         const getTrendingContent=async()=>{
             const response=await axios.get(`/api/v1/${contentType}/trending`)
-            console.log("Parent useEffect: Data fetched");
             setContent(response.data.content)
         }
         getTrendingContent()
