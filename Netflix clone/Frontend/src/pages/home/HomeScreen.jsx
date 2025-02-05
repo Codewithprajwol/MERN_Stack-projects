@@ -10,7 +10,6 @@ import ContentSlider from "../../components/ContentSlider"
 
 const HomeScreen = () => {
      const {content}=useGetContent()
-     console.log(content)
      const {contentType}=useContentStore()
      const [imageLoading,setImageLoading]=useState(true)
 

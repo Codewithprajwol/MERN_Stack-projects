@@ -7,6 +7,7 @@ import { Toaster } from 'react-hot-toast'
 import { useAuthStore } from './store/useAuthStore'
 import { useEffect } from 'react'
 import { Loader } from 'lucide-react'
+import WatchPage from './pages/WatchPage'
 
 const App = () => {
    const {authCheckUser,isAuthenticating,user}=useAuthStore()
@@ -27,6 +28,7 @@ const App = () => {
     <Routes>
       <Route path='/login' element={!user?<Login/>:<Navigate to={'/'}/>} />
       <Route path='/signup' element={!user?<Signup/>:<Navigate to={'/'}/>} />
+      <Route path='/watch/:id' element={user?<WatchPage/>:<Login/>} />
       <Route path='/' element={<Homepage/>} />
     </Routes>
     <Footer/>
