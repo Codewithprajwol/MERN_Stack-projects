@@ -5,8 +5,8 @@ import { useGetContent } from "../../Hooks/useGetContent"
 import { GET_ORIGINAL_URL, MOVIE_CATEGORIES, TV_CATEGORIES } from "../../utils/constant"
 
 import { useContentStore } from "../../store/useContentStore"
-import MovieSlider from "../../components/MovieSlider"
 import { useState } from "react"
+import ContentSlider from "../../components/ContentSlider"
 
 const HomeScreen = () => {
      const {content}=useGetContent()
@@ -43,7 +43,7 @@ const HomeScreen = () => {
 
     </div>
     <div className="flex flex-col gap-10 py-10 w-full bg-black text-white ">
-  {contentType==='movie'?(MOVIE_CATEGORIES.map((category)=><MovieSlider key={category} category={category}/>)):(TV_CATEGORIES.map((category)=><MovieSlider key={category} category={category}/>))}
+  {contentType==='movie'?(MOVIE_CATEGORIES.map((category)=><ContentSlider key={category} category={category}/>)):(TV_CATEGORIES.map((category)=><ContentSlider key={category} category={category}/>))}
     </div>
     </>
   )

@@ -1,18 +1,31 @@
 import PropTypes from 'prop-types'
 import { useContentStore } from '../store/useContentStore'
 import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { GET_SMALLER_URL } from '../utils/constant'
-import { ChevronLeft } from 'lucide-react'
-const MovieSlider = ({category}) => {
+import { ChevronLeft, ChevronRight } from 'lucide-react'
+const ContentSlider = ({category}) => {
 
     const [content,setContent]=useState([])
     const [arrowShow,setArrowShow]=useState(false)
+    const sliderRef=useRef(null)
 
+
+    const scrollLeft=()=>{
+        console.log(sliderRef.current.offsetWidth)
+        if(sliderRef.current){
+            sliderRef.current.scrollBy({left:sliderRef.current.offsetWidth,behavior:'smooth'})
+        }
+    }
+    const scrollRight=()=>{
+        console.log(sliderRef.current.offsetWidth)
+        if(sliderRef.current){
+            sliderRef.current.scrollBy({left:sliderRef.current.offsetWidth,behavior:'smooth'})
+    }
+    }
     
     const contentType=useContentStore((state)=>state.contentType)
-    console.log(category,contentType)
     const formattedCategoryName=category.replaceAll('_',' ')[0].toUpperCase()+category.replaceAll('_',' ').slice(1)
     const formattedContentType=contentType==='movie'? 'Movies' :'TV Shows'
 
@@ -24,9 +37,9 @@ const MovieSlider = ({category}) => {
         getContent()
     },[contentType,category])
   return (
-    <div className='text-white bg-black relative px-5 md:px-20'  onMouseEnter={()=>setArrowShow(true)} onMouseLeave={()=>setArrowShow(false)}>
+    <div className='text-white bg-black relative px-5 md:px-20'    onMouseEnter={()=>setArrowShow(true)} onMouseLeave={()=>setArrowShow(false)}>
         <h2 className='mb-4 font-bold text-2xl'>{formattedCategoryName}{" "}{formattedContentType}</h2>
-        <div className="flex space-x-4 overflow-x-scroll">
+        <div className="flex space-x-4 overflow-x-scroll" ref={sliderRef}>
             {content.map((item)=>(<Link key={item.id} to={`/watch/${item.id}`} className='min-w-[250px] relative group'>
             <div className="rounded-lg overflow-hidden">
                 <img src={GET_SMALLER_URL+item.backdrop_path} alt="Movie Image" className='transition-transform duration-300 ease-in-out group-hover:scale-125' />
@@ -36,11 +49,11 @@ const MovieSlider = ({category}) => {
         </div>
         {arrowShow && (
             <>
-            <button className='absolute left-0 md:left-20 top-1/2 -translate-y-1/2 flex items-center justify-center size-12 rounded-full bg-black bg-opacity-50 hover:bg-opacity-75 text-white z-10 cursor-pointer'>
+            <button onClick={scrollLeft} className='absolute left-0 md:left-20 top-1/2 -translate-y-1/2 flex items-center justify-center size-12 rounded-full bg-black bg-opacity-50 hover:bg-opacity-75 text-white z-10 cursor-pointer'>
                 <ChevronLeft/>
             </button>
-            <button className='absolute right-0 md:right-20 top-1/2 -translate-y-1/2 flex items-center justify-center size-12 rounded-full bg-black bg-opacity-50 hover:bg-opacity-75 text-white z-10 cursor-pointer'>
-                <ChevronLeft/>
+            <button onClick={scrollRight} className='absolute right-0 md:right-20 top-1/2 -translate-y-1/2 flex items-center justify-center size-12 rounded-full bg-black bg-opacity-50 hover:bg-opacity-75 text-white z-10 cursor-pointer'>
+                <ChevronRight/>
             </button>
             </>
         )}
@@ -48,8 +61,8 @@ const MovieSlider = ({category}) => {
   )
 }
 
-MovieSlider.propTypes={
+ContentSlider.propTypes={
     category:PropTypes.string
 }
 
-export default MovieSlider
+export default ContentSlider
