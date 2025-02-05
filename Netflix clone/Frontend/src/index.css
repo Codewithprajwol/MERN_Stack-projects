@@ -17,3 +17,8 @@
     background-position:1000px 0;
   }
 }
+
+.scrollbar-hide::-webkit-scrollbar{
+  display:none;
+  
+}

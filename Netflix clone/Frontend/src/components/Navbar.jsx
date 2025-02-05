@@ -35,8 +35,8 @@ const Navbar = () => {
       {/* mobile navbar items */}
          {isMobileMenuOpen && (
             <div className='w-full  sm:hidden mt-4 z-50 bg-black border rounded border-gray-700'>
-                <NavLink to={'/'} className='block hover:underline p-2' onClick={toggleMobileMenu}>Movies</NavLink>
-                <NavLink to={'/'} className='block hover:underline p-2' onClick={toggleMobileMenu}>Tv Shows</NavLink>
+                <NavLink to={'/'} className='block hover:underline p-2' onClick={()=>setContentType('movie')} >Movies</NavLink>
+                <NavLink to={'/'} className='block hover:underline p-2' onClick={()=>setContentType('tv')}>Tv Shows</NavLink>
                 <NavLink to={'/history'} className='block hover:underline p-2' onClick={toggleMobileMenu}>History</NavLink>
             </div> 
          )}
