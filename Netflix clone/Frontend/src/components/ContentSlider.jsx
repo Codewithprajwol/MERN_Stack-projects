@@ -40,12 +40,14 @@ const ContentSlider = ({category}) => {
     <div className='text-white bg-black relative px-5 md:px-20'    onMouseEnter={()=>setArrowShow(true)} onMouseLeave={()=>setArrowShow(false)}>
         <h2 className='mb-4 font-bold text-2xl'>{formattedCategoryName}{" "}{formattedContentType}</h2>
         <div className="flex space-x-4 overflow-x-scroll scrollbar-hide" ref={sliderRef}>
-            {content.map((item)=>(<Link key={item.id} to={`/watch/${item.id}`} className='min-w-[250px] relative group'>
+            {content.map((item)=>{
+                if(item.backdrop_path==null) return
+                <Link key={item.id} to={`/watch/${item.id}`} className='min-w-[250px] relative group'>
             <div className="rounded-lg overflow-hidden">
                 <img src={GET_SMALLER_URL+item.backdrop_path} alt="Movie Image" className='transition-transform duration-300 ease-in-out group-hover:scale-125' />
             </div>
             <p className='mt-2 text-center'>{item.title || item.name}</p>
-            </Link>))}
+            </Link>})}
         </div>
         {arrowShow && (
             <>
