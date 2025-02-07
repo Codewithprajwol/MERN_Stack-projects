@@ -32,7 +32,7 @@ const App = () => {
       <Route path='/signup' element={!user?<Signup/>:<Navigate to={'/'}/>} />
       <Route path='/watch/:id' element={user?<WatchPage/>:<Login/>} />
       <Route path='/' element={<Homepage/>} />
-      <Route path='/history' element={<Historypage/>} />
+      <Route path='/history' element={user?<Historypage/>:<Login/>} />
       <Route path='/search' element={user?<SearchPage/>:<Navigate to={'/login'}/>}/>
     </Routes>
     <Footer/>

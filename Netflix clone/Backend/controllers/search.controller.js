@@ -9,6 +9,11 @@ export const searchMovies = async (req, res) => {
     if (data.results?.length === 0) {
       return res.status(404).send(null);
     }
+
+    const user=await User.findById({_id:req.user._id})
+
+    const userSearchData=user.searchHistory.filter((singleData)=>singleData.id==data.results[0].id)
+    if(userSearchData.length===0){
     await User.findByIdAndUpdate(req.user._id, {
         $push: {
           searchHistory: {
@@ -20,6 +25,7 @@ export const searchMovies = async (req, res) => {
           },
         },
       });
+    }
     res.status(200).json({ success: true, data: data.results });
   } catch (err) {
     console.log("error in searchPerson controller", err.message);
@@ -34,6 +40,9 @@ export const searchPerson = async (req, res) => {
     if (data.results?.length === 0) {
       return res.status(404).send(null);
     }
+    const user=await User.findById({_id:req.user._id})
+ const userSearchData=user.searchHistory.filter((singleData)=>singleData.id==data.results[0].id)
+        if(userSearchData.length===0){
     await User.findByIdAndUpdate(req.user._id, {
       $push: {
         searchHistory: {
@@ -45,6 +54,8 @@ export const searchPerson = async (req, res) => {
         },
       },
     });
+  }
+  
     res.status(200).json({ success: true, data: data.results });
   } catch (err) {
     console.log("error in searchPerson controller", err.message);
@@ -59,6 +70,10 @@ export const searchTv = async (req, res) => {
     if (data.results?.length === 0) {
       return res.status(404).send(null);
     }
+    const user=await User.findById({_id:req.user._id})
+
+    const userSearchData=user.searchHistory.filter((singleData)=>singleData.id==data.results[0].id)
+    if(userSearchData.length===0){
     await User.findByIdAndUpdate(req.user._id, {
         $push: {
           searchHistory: {
@@ -70,6 +85,7 @@ export const searchTv = async (req, res) => {
           },
         },
       });
+    }
     res.status(200).json({ success: true, data: data.results });
   } catch (err) {
     console.log("error in searchPerson controller", err.message);
