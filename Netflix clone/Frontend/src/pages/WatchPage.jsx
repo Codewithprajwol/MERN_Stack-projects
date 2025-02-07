@@ -7,6 +7,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import ReactPlayer from 'react-player'
 import { GET_ORIGINAL_URL, GET_SMALLER_URL } from "../utils/constant";
 import WatchSkeleton from "../components/skeletons/WatchSkeleton";
+import { formatReleaseDate } from "../utils/formatReleaseDate";
 
 const WatchPage = () => {
   const { id } = useParams();
@@ -18,11 +19,7 @@ const WatchPage = () => {
   const { contentType } = useContentStore();
   const sliderRef=useRef(null)
   
-  const formatReleaseDate=(date)=>{return new Date(date).toLocaleDateString("en-US",{
-    year:"numeric",
-    month:"long",
-    day:"numeric"       
-  })}
+ 
   const handleNext=()=>{
       if(trailersIdx<trailers.length-1) setTrailerIdx(trailersIdx+1)
       }
@@ -91,19 +88,20 @@ const WatchPage = () => {
     </div>)
   }
 
-      
      const scrollLeft=()=>{
           console.log(sliderRef.current.offsetWidth)
           if(sliderRef.current){
               sliderRef.current.scrollBy({left:-sliderRef.current.offsetWidth,behavior:'smooth'})
           }
       }
+
       const scrollRight=()=>{
           console.log(sliderRef.current.offsetWidth)
           if(sliderRef.current){
               sliderRef.current.scrollBy({left:sliderRef.current.offsetWidth,behavior:'smooth'})
       }
       }
+
   return (
     <div className="min-h-screen w-full text-white bg-black">
       <div className="container mx-auto px-4 py-4 h-full">
@@ -157,7 +155,7 @@ const WatchPage = () => {
         {similarContent.length >0 &&
            (<div className="mt-12 max-w-5xl mx-auto relative" >
             <h3 className="text-3xl mb-4">
-               {contentType==="movie"?'Simillar Movies':'Tv Shows'}
+               {contentType==="movie"?'Similar Movies':'Similar Tv Shows'}
             </h3>
             <div className="flex space-x-4 overflow-x-scroll scrollbar-hide" ref={sliderRef}>
             {similarContent.map((item)=>{
