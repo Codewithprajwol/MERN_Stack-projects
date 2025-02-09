@@ -22,7 +22,6 @@ const Historypage = () => {
   },[])
 
   const handleDelete=async(id)=>{
-    console.log(id)
       try{
         await axios.delete(`/api/v1/search/history/${id}`);
         setSearchHistory((prevState)=>prevState.filter((entry)=>entry.id!==id))

@@ -19,7 +19,6 @@ const ContentSlider = ({category}) => {
     }
 
     const scrollRight=()=>{
-        console.log(sliderRef.current.offsetWidth)
         if(sliderRef.current){
             sliderRef.current.scrollBy({left:sliderRef.current.offsetWidth,behavior:'smooth'})
     }
@@ -36,7 +35,6 @@ const ContentSlider = ({category}) => {
         }
         getContent()
     },[contentType,category])
-    console.log(content)
   return (
     <div className='text-white bg-black relative px-5 md:px-20' onMouseEnter={()=>setArrowShow(true)} onMouseLeave={()=>setArrowShow(false)}>
         <h2 className='mb-4 font-bold text-2xl'>{formattedCategoryName}{" "}{formattedContentType}</h2>
